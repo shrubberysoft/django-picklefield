@@ -105,6 +105,16 @@ lookups should once again work as expected in all situations. Also made the
 field editable=False by default (which I swear I already did once before!)
 since it is never a good idea to have a PickledObjectField be user editable.
 
+-------
+Changes
+-------
+
+Changes in version 0.1
+======================
+
+* First public release.
+
+
 --------
 Feedback
 --------
