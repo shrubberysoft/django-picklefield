@@ -3,5 +3,5 @@
 /build
 /dist
 /temp
-/src/picklefield.egg-info
+/src/django_picklefield.egg-info
 
