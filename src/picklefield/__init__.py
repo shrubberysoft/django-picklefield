@@ -1,1 +1,3 @@
-from picklefield import PickledObjectField
+"""Pickle field implementation for Django."""
+
+from picklefield import PickledObjectField # reexport

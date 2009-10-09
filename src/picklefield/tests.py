@@ -1,4 +1,4 @@
-"""Unit testing for django-picklefield."""
+"""Unit tests for django-picklefield."""
 
 from django.test import TestCase
 from django.db import models
