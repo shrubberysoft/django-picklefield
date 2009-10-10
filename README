@@ -48,9 +48,6 @@ or unpickle anything. Also works fine when querying; supports exact, in, and
 isnull lookups. It should be noted, however, that calling QuerySet.values()
 will only return the encoded data, not the original Python object.
 
-Please note that this is supposed to be two files, one fields.py and one
-tests.py (if you don't care about the unit tests, just use fields.py).
-
 This PickledObjectField has a few improvements over the one in snippet #513.
 
 This one solves the DjangoUnicodeDecodeError problem when saving an object
@@ -88,10 +85,6 @@ You can manually import dbsafe_encode and dbsafe_decode from fields.py if you
 want to encode and decode objects yourself. This is mostly useful for decoding
 values returned from calling QuerySet.values(), which are still encoded
 strings.
-
-The tests have been updated to match the added features, but if you find any
-bugs, please post them in the comments. My goal is to make this an error-proof
-implementation.
 
 Note: If you are trying to store other django models in the PickledObjectField,
 please see the comments for a discussion on the problems associated with doing
