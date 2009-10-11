@@ -20,16 +20,15 @@ convenience, recent versions should be available from PyPI.
 
 To use, just define a field in your model::
 
-    from picklefield import PickledObjectField
-
-    class SomeObject(models.Model):
-        args = PickledObjectField()
+    >>> from picklefield.fields import PickledObjectField
+    ... class SomeObject(models.Model):
+    ...     args = PickledObjectField()
 
 and assign whatever you like (as long as it's picklable) to the field::
 
-    obj = SomeObject()
-    obj.args = ['fancy', {'objects': 'inside'}]
-    obj.save()
+    >>> obj = SomeObject()
+    >>> obj.args = ['fancy', {'objects': 'inside'}]
+    >>> obj.save()
 
 
 -----
