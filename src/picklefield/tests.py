@@ -2,12 +2,16 @@
 
 from django.test import TestCase
 from django.db import models
+from django.core import serializers
 from picklefield.fields import PickledObjectField
 
 class TestingModel(models.Model):
     pickle_field = PickledObjectField()
     compressed_pickle_field = PickledObjectField(compress=True)
     default_pickle_field = PickledObjectField(default=({1: 1, 2: 4, 3: 6, 4: 8, 5: 10}, 'Hello World', (1, 2, 3, 4, 5), [1, 2, 3, 4, 5]))
+
+class MinimalTestingModel(models.Model):
+    pickle_field = PickledObjectField()
 
 class TestCustomDataType(str):
     pass
@@ -45,7 +49,6 @@ class PickledObjectFieldTests(TestCase):
         model_test.save()
         model_test = TestingModel.objects.get(id__exact=model_test.id)
         self.assertEquals(({1: 1, 2: 4, 3: 6, 4: 8, 5: 10}, 'Hello World', (1, 2, 3, 4, 5), [1, 2, 3, 4, 5]), model_test.default_pickle_field)
-
 
     def testLookups(self):
         """
@@ -134,3 +137,10 @@ class PickledObjectFieldTests(TestCase):
         )
         self.assertEquals(value, model_test.pickle_field)
         model_test.delete()
+
+    def testSerialization(self):
+        model_test = MinimalTestingModel(pickle_field={'foo': 'bar'})
+        self.assertEquals(serializers.serialize('json', [model_test]),
+                          '[{"pk": null,'
+                          ' "model": "picklefield.minimaltestingmodel",'
+                          ' "fields": {"pickle_field": "KGRwMQpTJ2ZvbycKcDIKUydiYXInCnAzCnMu"}}]')
