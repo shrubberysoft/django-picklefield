@@ -35,6 +35,17 @@ and assign whatever you like (as long as it's picklable) to the field::
 Notes
 -----
 
+If you need to serialize an object with a PickledObjectField for transmission
+to the browser, you may need to subclass the field and override the
+``value_to_string()`` method.  Currently pickle fields are serialized as
+base64-encoded pickles, which allows reliable deserialization, but such a
+format is not convenient for parsing in the browser.  By overriding
+``value_to_string()`` you can choose a more convenient serialization format.
+
+--------------
+Original notes
+--------------
+
 Here are the notes by taavi223, the original author:
 
 Incredibly useful for storing just about anything in the database (provided it
@@ -101,10 +112,16 @@ since it is never a good idea to have a PickledObjectField be user editable.
 Changes
 -------
 
+Changes in version 0.1.1
+========================
+
+ * Added test for serialization.
+ * Added note about serialization for browser.
+
 Changes in version 0.1
 ======================
 
-* First public release.
+ * First public release.
 
 
 --------
