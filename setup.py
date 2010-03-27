@@ -1,4 +1,4 @@
-# Copyright (c) 2009 Shrubbery Software
+# Copyright (c) 2009-2010 Gintautas Miliauskas
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
