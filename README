@@ -10,6 +10,8 @@ The implementation is taken and adopted from `Django snippet #1694
 turn based on `Django snippet #513 <http://www.djangosnippets.org/snippets/513/>`_
 by Oliver Beattie.
 
+django-picklefield is available under the MIT license.
+
 
 -----
 Usage
@@ -111,6 +113,11 @@ since it is never a good idea to have a PickledObjectField be user editable.
 -------
 Changes
 -------
+
+Changes in version 0.1.2
+========================
+
+ * Added Simplified BSD licence.
 
 Changes in version 0.1.1
 ========================
