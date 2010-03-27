@@ -116,7 +116,9 @@ Changes in version 0.1.1
 ========================
 
  * Added test for serialization.
- * Added note about serialization for browser.
+ * Added note about JSON serialization for browser.
+ * Added support for different pickle protocol versions (thanks to Michael
+   Fladischer).
 
 Changes in version 0.1
 ======================

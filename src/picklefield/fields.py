@@ -11,6 +11,7 @@ except ImportError:
 from django.db import models
 from django.utils.encoding import force_unicode
 
+from picklefield import DEFAULT_PROTOCOL
 
 class PickledObject(str):
     """
@@ -27,7 +28,7 @@ class PickledObject(str):
     """
 
 
-def dbsafe_encode(value, compress_object=False):
+def dbsafe_encode(value, compress_object=False, pickle_protocol=DEFAULT_PROTOCOL):
     """
     We use deepcopy() here to avoid a problem with cPickle, where dumps
     can generate different character streams for same lookup value if
@@ -38,9 +39,9 @@ def dbsafe_encode(value, compress_object=False):
     for the lookups to work properly. See tests.py for more information.
     """
     if not compress_object:
-        value = b64encode(dumps(deepcopy(value)))
+        value = b64encode(dumps(deepcopy(value), pickle_protocol))
     else:
-        value = b64encode(compress(dumps(deepcopy(value))))
+        value = b64encode(compress(dumps(deepcopy(value), pickle_protocol)))
     return PickledObject(value)
 
 
@@ -69,7 +70,7 @@ class PickledObjectField(models.Field):
 
     def __init__(self, *args, **kwargs):
         self.compress = kwargs.pop('compress', False)
-        self.protocol = kwargs.pop('protocol', 2)
+        self.protocol = kwargs.pop('protocol', DEFAULT_PROTOCOL)
         kwargs.setdefault('null', True)
         kwargs.setdefault('editable', False)
         super(PickledObjectField, self).__init__(*args, **kwargs)
@@ -131,7 +132,7 @@ class PickledObjectField(models.Field):
             # marshaller (telling it to store it like it would a string), but
             # since both of these methods result in the same value being stored,
             # doing things this way is much easier.
-            value = force_unicode(dbsafe_encode(value, self.compress))
+            value = force_unicode(dbsafe_encode(value, self.compress, self.protocol))
         return value
 
     def value_to_string(self, obj):
