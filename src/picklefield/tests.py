@@ -140,7 +140,11 @@ class PickledObjectFieldTests(TestCase):
 
     def testSerialization(self):
         model_test = MinimalTestingModel(pickle_field={'foo': 'bar'})
-        self.assertEquals(serializers.serialize('json', [model_test]),
+        json_test = serializers.serialize('json', [model_test])
+        self.assertEquals(json_test,
                           '[{"pk": null,'
                           ' "model": "picklefield.minimaltestingmodel",'
-                          ' "fields": {"pickle_field": "KGRwMQpTJ2ZvbycKcDIKUydiYXInCnAzCnMu"}}]')
+                          ' "fields": {"pickle_field": "gAJ9cQFVA2Zvb3ECVQNiYXJxA3Mu"}}]')
+        for deserialized_test in serializers.deserialize('json', json_test):
+            self.assertEquals(deserialized_test.object,
+                              model_test)

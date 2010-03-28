@@ -21,7 +21,7 @@
 from setuptools import setup, find_packages
 
 setup(name='django-picklefield',
-    version='0.1.2',
+    version='0.1.3',
     description='Pickled object field for Django',
     long_description=open('README').read(),
     author='Shrubbery Software',
