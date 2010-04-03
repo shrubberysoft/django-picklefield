@@ -114,6 +114,16 @@ since it is never a good idea to have a PickledObjectField be user editable.
 Changes
 -------
 
+Changes in version 0.1.5
+========================
+
+ * Added support for South.
+
+Changes in version 0.1.4
+========================
+
+ * Updated copyright statements.
+
 Changes in version 0.1.3
 ========================
 

@@ -148,3 +148,12 @@ class PickledObjectField(models.Field):
         # The Field model already calls get_db_prep_value before doing the
         # actual lookup, so all we need to do is limit the lookup types.
         return super(PickledObjectField, self).get_db_prep_lookup(lookup_type, value)
+
+
+# South support; see http://south.aeracode.org/docs/tutorial/part4.html#simple-inheritance
+try:
+    from south.modelsinspector import add_introspection_rule
+except ImportError:
+    pass
+else:
+    add_introspection_rules([], [r"^picklefield\.fields\.PickledObjectField"])
