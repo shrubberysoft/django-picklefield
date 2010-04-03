@@ -56,7 +56,7 @@ def dbsafe_decode(value, compress_object=False):
 class PickledObjectField(models.Field):
     """
     A field that will accept *any* python object and store it in the
-    database. PickledObjectField will optionally compress it's values if
+    database. PickledObjectField will optionally compress its values if
     declared with the keyword argument ``compress=True``.
 
     Does not actually encode and compress ``None`` objects (although you
