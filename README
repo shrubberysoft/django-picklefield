@@ -118,6 +118,7 @@ Changes in version 0.1.5
 ========================
 
  * Added support for South.
+ * Changed default to null=False, as is common throughout Django.
 
 Changes in version 0.1.4
 ========================
