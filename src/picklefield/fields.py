@@ -29,15 +29,12 @@ class PickledObject(str):
 
 
 def dbsafe_encode(value, compress_object=False, pickle_protocol=DEFAULT_PROTOCOL):
-    """
-    We use deepcopy() here to avoid a problem with cPickle, where dumps
-    can generate different character streams for same lookup value if
-    they are referenced differently.
-
-    The reason this is important is because we do all of our lookups as
-    simple string matches, thus the character streams must be the same
-    for the lookups to work properly. See tests.py for more information.
-    """
+    # We use deepcopy() here to avoid a problem with cPickle, where dumps
+    # can generate different character streams for same lookup value if
+    # they are referenced differently.
+    # The reason this is important is because we do all of our lookups as
+    # simple string matches, thus the character streams must be the same
+    # for the lookups to work properly. See tests.py for more information.
     if not compress_object:
         value = b64encode(dumps(deepcopy(value), pickle_protocol))
     else:
@@ -61,11 +58,9 @@ class PickledObjectField(models.Field):
 
     Does not actually encode and compress ``None`` objects (although you
     can still do lookups using None). This way, it is still possible to
-    use the ``isnull`` lookup type correctly. Because of this, the field
-    defaults to ``null=True``, as otherwise it wouldn't be able to store
-    None values since they aren't pickled and encoded.
-
+    use the ``isnull`` lookup type correctly.
     """
+
     __metaclass__ = models.SubfieldBase
 
     def __init__(self, *args, **kwargs):
