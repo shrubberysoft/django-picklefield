@@ -146,7 +146,7 @@ class PickledObjectField(models.Field):
 
 # South support; see http://south.aeracode.org/docs/tutorial/part4.html#simple-inheritance
 try:
-    from south.modelsinspector import add_introspection_rule
+    from south.modelsinspector import add_introspection_rules
 except ImportError:
     pass
 else:
