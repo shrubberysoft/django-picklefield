@@ -5,9 +5,9 @@ About
 **django-picklefield** provides an implementation of a pickled object field.
 Such fields can contain any picklable objects.
 
-The implementation is taken and adopted from `Django snippet #1694
-<http://www.djangosnippets.org/snippets/1694/>`_ by Taavi Taijala, which is in
-turn based on `Django snippet #513 <http://www.djangosnippets.org/snippets/513/>`_
+The implementation is taken and adopted from Django snippet #1694
+<http://www.djangosnippets.org/snippets/1694/> by Taavi Taijala, which is in
+turn based on Django snippet #513 <http://www.djangosnippets.org/snippets/513/>
 by Oliver Beattie.
 
 django-picklefield is available under the MIT license.
@@ -114,6 +114,11 @@ since it is never a good idea to have a PickledObjectField be user editable.
 Changes
 -------
 
+Changes in version 0.1.8
+========================
+
+ * Updated link to code repository.
+
 Changes in version 0.1.7
 ========================
 
@@ -164,7 +169,7 @@ Changes in version 0.1
 Feedback
 --------
 
-There is a `home page <http://github.com/gintas/django-picklefield>`_
+There is a home page <http://github.com/gintas/django-picklefield>
 with instructions on how to access the code repository.
 
 Send feedback and suggestions to gintautas@miliauskas.lt .
