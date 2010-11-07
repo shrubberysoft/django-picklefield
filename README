@@ -114,6 +114,12 @@ since it is never a good idea to have a PickledObjectField be user editable.
 Changes
 -------
 
+Changes in version 0.1.7
+========================
+
+ * Added `connection` and `prepared` parameters to `get_db_prep_lookup()` to
+   get rid of deprecation warnings in Django 1.2.
+
 Changes in version 0.1.6
 ========================
 
